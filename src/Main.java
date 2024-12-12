@@ -7,23 +7,29 @@ public class Main
         String num1 = "", num2 = "";
         int base;
         int max1, max2;
+        String quit="quit";
         System.out.println("Ex1 class solution:");
-        System.out.println("Enter a string as number#1 (or \"quit\" to end the program): ");
-        while (!num1.equals("quit") && !num2.equals("quit"))
+        while (!num1.equals(quit) && !num2.equals(quit))
         {
+            System.out.println("Enter a string as number#1 (or \"quit\" to end the program): ");
             num1 = sc.nextLine();
-            if (num1 != "quit") {
+            if (!num1.equals(quit)&&num1 != null && !num1.isEmpty())
+            {
                 System.out.println("num1= " + num1 + " is a number: " + Ex1.isNumber(num1) + ", value: " + Ex1.number2Int(num1));
-                if (Ex1.number2Int(num1) == -1) System.out.print("ERR: num1 is in the wrong format! (" + num1 + ")");
+                if (Ex1.number2Int(num1) == -1) System.out.println("ERR: num1 is in the wrong format! (" + num1 + ")");
                 if (Ex1.number2Int(num1) != -1)
                 {
                     System.out.println("Enter a string as number#2 (or \"quit\" to end the program): ");
                     num2 = sc.nextLine();
-                    if (num2 != "quit") {
+                    if  (!num2.equals(quit)&&num2 != null && !num2.isEmpty())
+                    {
                         System.out.println("num2= " + num2 + " is a number: " + Ex1.isNumber(num2) + ", value: " + Ex1.number2Int(num2));
                         if (Ex1.number2Int(num2) == -1)
-                            System.out.print("ERR: num2 is in the wrong format! (" + num2 + ")");
-                        if (Ex1.number2Int(num2) != -1) {
+                        {
+                            System.out.println("ERR: num2 is in the wrong format! (" + num2 + ")");
+                        }
+                        else
+                        {
                             System.out.print("Enter a base for output: a number [2,16] \n");
                             base = sc.nextInt();
                             if(base>=2&&base<=16)
@@ -40,11 +46,18 @@ public class Main
                             else break;
                         }
                     }
+                    else if(num2.equals(quit))
+                    {
+                        System.out.print("quitting now...");
+                    }
                 }
-                else break;
+                //else break;
+            }
+            else if(num1.equals(quit))
+            {
+                System.out.print("quitting now.....");
             }
 
         }
     }
 }
-
